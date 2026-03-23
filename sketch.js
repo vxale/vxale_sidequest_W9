@@ -64,7 +64,7 @@ const MAP_START_Y = VIEWH - TILE_H * 4;
 
 // gravity
 const GRAVITY = 10;
-const MOON_GRAVITY = 1.6;
+const MOON_GRAVITY = 3;
 
 let debugMode = false;
 let moonGravityOn = false;
@@ -206,7 +206,7 @@ function draw() {
 
   // -- JUMP --
   if (grounded && kb.presses("up")) {
-    player.vel.y = -4;
+    player.vel.y = moonGravityOn ? -3 : -4;
     if (jumpSfx) jumpSfx.play();
   }
 
