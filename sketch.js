@@ -243,14 +243,18 @@ function draw() {
 
     fill(0, 180);
     noStroke();
-    rect(10, 10, 140, 60, 8);
+    rect(10, 10, 170, 90, 8);
 
     fill(255);
     textSize(12);
     textAlign(LEFT, TOP);
+
     text("DEBUG MODE", 20, 18);
     text("Moon Gravity: " + (moonGravityOn ? "ON" : "OFF"), 20, 36);
-    text("Press G to toggle", 20, 52);
+
+    text("Grounded: " + (grounded ? "YES" : "NO"), 20, 54); // Grounded state for testing gravity changes
+
+    text("Press G to toggle gravity", 20, 72);
 
     camera.on();
   }
