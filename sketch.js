@@ -64,6 +64,10 @@ const MAP_START_Y = VIEWH - TILE_H * 4;
 
 // gravity
 const GRAVITY = 10;
+const MOON_GRAVITY = 1.6;
+
+let debugMode = false;
+let moonGravityOn = false;
 
 function preload() {
   // --- IMAGES ---
@@ -79,6 +83,9 @@ function preload() {
   }
 }
 
+function applyGravity() {
+  world.gravity.y = moonGravityOn ? MOON_GRAVITY : GRAVITY;
+}
 function setup() {
   // pixelated rendering with autoscaling
   new Canvas(VIEWW, VIEWH, "pixelated");
@@ -86,7 +93,7 @@ function setup() {
   // needed to correct an visual artifacts from attempted antialiasing
   allSprites.pixelPerfect = true;
 
-  world.gravity.y = GRAVITY;
+  applyGravity();
 
   // Try to start background music immediately.
   if (musicSfx) musicSfx.setLoop(true);
@@ -154,6 +161,17 @@ function startMusicIfNeeded() {
 
 function keyPressed() {
   startMusicIfNeeded();
+
+  // Toggle debug screen
+  if (key === "`") {
+    debugMode = !debugMode;
+  }
+
+  // Toggle moon gravity only while debug screen is enabled
+  if (debugMode && (key === "g" || key === "G")) {
+    moonGravityOn = !moonGravityOn;
+    applyGravity();
+  }
 }
 
 function mousePressed() {
