@@ -237,6 +237,24 @@ function draw() {
     }
   }
 
+  // --- DEBUG OVERLAY ---
+  if (debugMode) {
+    camera.off();
+
+    fill(0, 180);
+    noStroke();
+    rect(10, 10, 140, 60, 8);
+
+    fill(255);
+    textSize(12);
+    textAlign(LEFT, TOP);
+    text("DEBUG MODE", 20, 18);
+    text("Moon Gravity: " + (moonGravityOn ? "ON" : "OFF"), 20, 36);
+    text("Press G to toggle", 20, 52);
+
+    camera.on();
+  }
+
   // --- KEEP IN VIEW ---
   player.pos.x = constrain(player.pos.x, FRAME_W / 2, VIEWW - FRAME_W / 2);
 }
