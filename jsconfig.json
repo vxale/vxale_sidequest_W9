@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "checkJs": false,
+    "allowJs": true
+  },
+  "include": ["*.js", "**/*.js", "./types/p5/index.d.ts", "./types/p5/global.d.ts"],
+  "exclude": ["node_modules"]
+}
